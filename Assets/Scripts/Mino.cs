@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
 {
     const int allowableToerance = 3;
-    float previousTime;//経過時間
+    float previousTime;//経過時間s
     float fallTime = 1f;//minoが落ちる時間
     bool isPushed = false;//マウス検知用変数
     Vector3 touchPosition;//minoにタッチした時のポシション
@@ -106,6 +106,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
                 enabled = false;
                 NextFlag = false;
                 AddToGrid();//動けない状態になったらすぐグリッドに登録
+                CheckLines();
                 nextMinos = GameObject.FindGameObjectsWithTag("Mino");
                 foreach (var nxMino in nextMinos)
                 {
@@ -128,6 +129,52 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
             int roundX = Mathf.RoundToInt(children.transform.position.x);//minoブロックの子オブジェクトのx座標を取得
             int roundY = Mathf.RoundToInt(children.transform.position.y);//minoブロックの子オブジェクトのy座標を取得
             grid[roundX, roundY] = children;//minoブロックの子オブジェクトをグリッド配列に一つ一つ登録
+        }
+    }
+
+    void CheckLines()
+    {
+        for(int i = height -1; i >= 0; i--)//0から19段のラインを確認(縦)
+        {
+            if (HasLine(i))
+            {
+                DeleteLine(i);
+                RowDown(i);
+            }
+        }
+    }
+
+    bool HasLine(int i)
+    {
+        for(int j = 0; j < width; j++)//0から10段のラインを確認(横）
+        {
+            if (grid[j, i] == null) return false;
+        }
+        return true;
+    }
+
+    void DeleteLine(int i)
+    {
+        for(int j = 0; j <　width; j++)
+        {
+            Destroy(grid[j, i].gameObject);
+            grid[j, i] = null;
+        }
+    }
+
+    void RowDown(int i)
+    {
+        for(int y = i; y < height; y++)//消された行から最大行まで調べる
+        {
+            for(int j = 0; j < width; j++)//横の列すべて調べる
+            {
+                if(grid[j,y] != null)//参照されていれば
+                {
+                    grid[j, y - 1] = grid[j, y];//参照を１行下げる
+                    grid[j, y] = null;
+                    grid[j, y - 1].transform.position -= new Vector3(0, 1, 0);//ミノを一段下げる
+                }
+            }
         }
     }
 }
