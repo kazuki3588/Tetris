@@ -433,3 +433,43 @@ Received Import Request.
 Start importing Assets/Prefabs/Lmino.prefab using Guid(6efa37a746998479d823baa0fd728356) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4fd389b86c50e4508d6e5885b88e89d6') in 0.014180 seconds 
   Import took 0.025337 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 1678.790918 seconds.
+  path: Assets/Prefabs/tetris.psd
+  artifactKey: Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/tetris.psd using Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0bd63930fb21fda5923367f7fefff499') in 0.036224 seconds 
+  Import took 0.041397 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 76.683607 seconds.
+  path: Assets/Prefabs/tetris.psd
+  artifactKey: Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/tetris.psd using Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '299892d749b0dd7a5dc4feaa715ca3b7') in 0.031869 seconds 
+  Import took 0.037537 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.042904 seconds.
+  path: Assets/Prefabs/tetris.psd
+  artifactKey: Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/tetris.psd using Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '299892d749b0dd7a5dc4feaa715ca3b7') in 0.018639 seconds 
+  Import took 0.023270 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 47.170753 seconds.
+  path: Assets/Prefabs/tetris.psd
+  artifactKey: Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/tetris.psd using Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04e542c729153e0d9317e29b9b877131') in 0.019384 seconds 
+  Import took 0.025994 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.056481 seconds.
+  path: Assets/Prefabs/tetris.psd
+  artifactKey: Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/tetris.psd using Guid(9f2e5833baba246f4a066b9223d76c96) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '04e542c729153e0d9317e29b9b877131') in 0.028338 seconds 
+  Import took 0.036476 seconds .
+
