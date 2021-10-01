@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
 {
     const int allowableToerance = 3;
-    float previousTime;
+    float previousTime;//経過時間
     float fallTime = 1f;//minoが落ちる時間
     bool isPushed = false;//マウス検知用変数
     Vector3 touchPosition;//minoにタッチした時のポシション
@@ -34,7 +34,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
         RightMouve(diffposition);
         LeftMove(diffposition);
 
-
+        touchPosition = nowPosition;//処理が終わった後差分を０にするため
     }
 
     public void OnPointerDown(PointerEventData eventData)
