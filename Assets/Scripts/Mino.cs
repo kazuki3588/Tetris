@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 //テトリミノを管理するクラス
 class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
 {
@@ -7,6 +8,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
     float previousTime;//経過時間s
     float fallTime = 1f;//minoが落ちる時間
     bool isPushed = false;//マウス検知用変数
+    bool maxMino = false;
     Vector3 touchPosition;//minoにタッチした時のポシション
     Vector3 rotationPoint;//minoの回転
     Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
@@ -110,7 +112,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
                 nextMinos = GameObject.FindGameObjectsWithTag("Mino");
                 foreach (var nxMino in nextMinos)
                 {
-                    if (nxMino.GetComponent<Mino>().NextFlag == true)
+                    if (nxMino.GetComponent<Mino>().NextFlag == true && !maxMino)
                     {
                         nxMino.transform.position = spawnPositon;//nextMinoの待機場所を変更
                         nxMino.GetComponent<Mino>().enabled = true;//Minoを動かせる状態にする
@@ -124,11 +126,17 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
 
     void AddToGrid()
     {
-        foreach(Transform children in transform)//
+        foreach(Transform children in transform)
         {
             int roundX = Mathf.RoundToInt(children.transform.position.x);//minoブロックの子オブジェクトのx座標を取得
             int roundY = Mathf.RoundToInt(children.transform.position.y);//minoブロックの子オブジェクトのy座標を取得
             grid[roundX, roundY] = children;//minoブロックの子オブジェクトをグリッド配列に一つ一つ登録
+
+            if(roundY >= height - 1)
+            {
+                maxMino = true;
+                FindObjectOfType<GameManager>().GameOver();
+            }
         }
     }
 
