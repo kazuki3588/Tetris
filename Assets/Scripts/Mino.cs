@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 //テトリミノを管理するクラス
 class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
 {
+    const int allowableToerance = 3;
     float previousTime;
     float fallTime = 1f;//minoが落ちる時間
     bool isPushed = false;//マウス検知用変数
@@ -11,14 +12,18 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
     Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
     static int width = 10;//ステージの横幅
     static int height = 20;//ステージの縦幅
-    GameObject[] nextMinos;
+    static Transform[,] grid = new Transform[width, height + allowableToerance];//ミノを積み上げるためのグリッド２次元配列
+    GameObject[] nextMinos;//現在存在するミノを格納するための変数
+
     public bool NextFlag { get; set; }
+
     void Update()
     {
         Vector3 nowPosition;//現在のマウスポジション
         Vector3 diffposition;//差分を格納する変数
 
         bottomMove();
+
         if (!isPushed) return;
         nowPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         diffposition = nowPosition - touchPosition;
@@ -62,7 +67,10 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
             {
                 return false;
             }
-
+            else if(grid[roundX,roundY] != null)//グリッドに登録されていたら、falseを返す;
+            {
+                return false;
+            }
         }
         return true;
     }
@@ -97,6 +105,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
                 transform.position -= new Vector3(0, -1, 0);
                 enabled = false;
                 NextFlag = false;
+                AddToGrid();//動けない状態になったらすぐグリッドに登録
                 nextMinos = GameObject.FindGameObjectsWithTag("Mino");
                 foreach (var nxMino in nextMinos)
                 {
@@ -110,5 +119,15 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
             }
             previousTime = Time.time;
         }
-    } 
+    }
+
+    void AddToGrid()
+    {
+        foreach(Transform children in transform)//
+        {
+            int roundX = Mathf.RoundToInt(children.transform.position.x);//minoブロックの子オブジェクトのx座標を取得
+            int roundY = Mathf.RoundToInt(children.transform.position.y);//minoブロックの子オブジェクトのy座標を取得
+            grid[roundX, roundY] = children;//minoブロックの子オブジェクトをグリッド配列に一つ一つ登録
+        }
+    }
 }
