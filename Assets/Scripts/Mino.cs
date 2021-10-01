@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 //テトリミノを管理するクラス
-class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
+class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
 {
     float previousTime;
     float fallTime = 1f;//minoが落ちる時間
@@ -42,6 +42,12 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
         touchPosition = Vector3.zero;
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
+        if (ValidMouvement()) return;
+        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+    }
     bool ValidMouvement()
     {
         foreach (Transform children in transform)
