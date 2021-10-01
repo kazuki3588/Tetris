@@ -8,9 +8,11 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
     bool isPushed = false;//マウス検知用変数
     Vector3 touchPosition;//minoにタッチした時のポシション
     Vector3 rotationPoint;//minoの回転
+    Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
     static int width = 10;//ステージの横幅
     static int height = 20;//ステージの縦幅
-
+    GameObject[] nextMinos;
+    public bool NextFlag { get; set; }
     void Update()
     {
         Vector3 nowPosition;//現在のマウスポジション
@@ -48,6 +50,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
         if (ValidMouvement()) return;
         transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
     }
+
     bool ValidMouvement()
     {
         foreach (Transform children in transform)
@@ -55,7 +58,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
             int roundX = Mathf.RoundToInt(children.transform.position.x);
             int roundY = Mathf.RoundToInt(children.transform.position.y);
 
-            if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height)
+            if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height + 3)
             {
                 return false;
             }
@@ -93,8 +96,18 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
             {
                 transform.position -= new Vector3(0, -1, 0);
                 enabled = false;
+                NextFlag = false;
+                nextMinos = GameObject.FindGameObjectsWithTag("Mino");
+                foreach (var nxMino in nextMinos)
+                {
+                    if (nxMino.GetComponent<Mino>().NextFlag == true)
+                    {
+                        nxMino.transform.position = spawnPositon;//nextMinoの待機場所を変更
+                        nxMino.GetComponent<Mino>().enabled = true;//Minoを動かせる状態にする
+                        FindObjectOfType<SpawnMino>().NextMinoCreate();
+                    }
+                }
             }
-
             previousTime = Time.time;
         }
     } 
