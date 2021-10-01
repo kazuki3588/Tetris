@@ -153,3 +153,67 @@ Received Import Request.
 Start importing Assets/Scenes/GameScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd84ec865cfaf3bf13acd15927523344c') in 0.002191 seconds 
   Import took 0.007305 seconds .
 
+========================================================================
+Received Import Request.
+  Time since last request: 722.735628 seconds.
+  path: Assets/Images
+  artifactKey: Guid(4415b12a98bc94696965ed40cb60998b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images using Guid(4415b12a98bc94696965ed40cb60998b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7fa40fa1661bb9a15722814ba03dc390') in 0.004855 seconds 
+  Import took 0.012963 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 182.748859 seconds.
+  path: Assets/Images/blue.png
+  artifactKey: Guid(75a9d926bcb334634a87c2a9e64c5579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/blue.png using Guid(75a9d926bcb334634a87c2a9e64c5579) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '42fb45bfad863a4b91e7bf457a1ab53f') in 1.505477 seconds 
+  Import took 1.510574 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.026537 seconds.
+  path: Assets/Images/green.png
+  artifactKey: Guid(1b88ce489dbeb438ab12ce4bf5c3165b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/green.png using Guid(1b88ce489dbeb438ab12ce4bf5c3165b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a40e1bb3c1596ce2d09ade7e628c5f05') in 0.016117 seconds 
+  Import took 0.021324 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.402434 seconds.
+  path: Assets/Images/magenta.png
+  artifactKey: Guid(deb921e729370443fa2a2292eb3e3915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/magenta.png using Guid(deb921e729370443fa2a2292eb3e3915) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cadcae1027e4cc1a66e5716b73bebb61') in 0.021680 seconds 
+  Import took 0.027861 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.436809 seconds.
+  path: Assets/Images/orange.png
+  artifactKey: Guid(a66982ad62e4d4da7b2ce4ca76496ea8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/orange.png using Guid(a66982ad62e4d4da7b2ce4ca76496ea8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a58e9435a4661ed1f9f9741d30702c50') in 0.021112 seconds 
+  Import took 0.027203 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.258256 seconds.
+  path: Assets/Images/yellow.png
+  artifactKey: Guid(114bc844bba3049e1a376bf712780ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/yellow.png using Guid(114bc844bba3049e1a376bf712780ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63ca84f4f3840b417b0b15c5b511f781') in 0.020012 seconds 
+  Import took 0.024769 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.003467 seconds.
+  path: Assets/Images/yellow.png
+  artifactKey: Guid(114bc844bba3049e1a376bf712780ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/yellow.png using Guid(114bc844bba3049e1a376bf712780ef3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '63ca84f4f3840b417b0b15c5b511f781') in 0.012986 seconds 
+  Import took 0.016245 seconds .
+
+========================================================================
+Received Import Request.
+  Time since last request: 338.391002 seconds.
+  path: Assets/Images/tetris.psd
+  artifactKey: Guid(b4a16f06a109b40688b23cc8b8066825) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/tetris.psd using Guid(b4a16f06a109b40688b23cc8b8066825) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '35ef22856fb2960e74baa6b7bbb70f94') in 1.166214 seconds 
+  Import took 1.171658 seconds .
+
