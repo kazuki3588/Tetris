@@ -134,7 +134,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
 
             if(roundY >= height - 1)
             {
-                maxMino = true;
+                maxMino = true; 
                 FindObjectOfType<GameManager>().GameOver();
             }
         }
@@ -163,6 +163,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
 
     void DeleteLine(int i)
     {
+        FindObjectOfType<GameManager>().AddScore();
         for(int j = 0; j <　width; j++)
         {
             Destroy(grid[j, i].gameObject);
