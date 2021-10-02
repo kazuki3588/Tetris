@@ -2,60 +2,49 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 //テトリミノを管理するクラス
-class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHandler
+class Mino : MonoBehaviour
 {
     const int allowableToerance = 3;
-    float previousTime;//経過時間s
+    float previousTime;//経過時間
+    float movePreviousTime;//移動経過時間
     float fallTime = 1f;//minoが落ちる時間
-    bool isPushed = false;//マウス検知用変数
+    float mouseSensitivity = 0.3f;
     bool maxMino = false;
-    Vector3 touchPosition;//minoにタッチした時のポシション
     Vector3 rotationPoint;//minoの回転
     Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
     static int width = 10;//ステージの横幅
     static int height = 20;//ステージの縦幅
     static Transform[,] grid = new Transform[width, height + allowableToerance];//ミノを積み上げるためのグリッド２次元配列
     GameObject[] nextMinos;//現在存在するミノを格納するための変数
-
     public bool NextFlag { get; set; }
     public bool HoldFlag { get; set; }
+
     void Update()
     {
-        Vector3 nowPosition;//現在のマウスポジション
-        Vector3 diffposition;//差分を格納する変数
+        if (Input.GetMouseButton(0))
+        {
+            transform.Rotate(new Vector3(0, 0, -90));
+            if (!ValidMouvement())
+            {
+                transform.Rotate(new Vector3(0, 0, 90));
+            }
+        }
 
         bottomMove();
+        float mouseX = Input.GetAxis("Mouse X");
 
-        if (!isPushed) return;
-        nowPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        diffposition = nowPosition - touchPosition;
+        if (Time.time - movePreviousTime < mouseSensitivity) return;
 
-        diffposition.y = 0;
-        diffposition.z = 0;
-
-        RightMouve(diffposition);
-        LeftMove(diffposition);
-
-        touchPosition = nowPosition;//処理が終わった後差分を０にするため
-    }
-
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        isPushed = true;
-        touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        isPushed = false;
-        touchPosition = Vector3.zero;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-        if (ValidMouvement()) return;
-        transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
+        if (mouseX > 0)
+        {
+            RightMove();
+            movePreviousTime = Time.time;
+        }
+        else if (mouseX < 0)
+        {
+            LeftMove();
+            movePreviousTime = Time.time;
+        }
     }
 
     bool ValidMouvement()
@@ -77,24 +66,22 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
         return true;
     }
 
-    void RightMouve(Vector3 diffposi)
+    void RightMove()
     {
-        if(diffposi.x > 0)
+        transform.position += new Vector3(1, 0, 0);
+        if (!ValidMouvement())
         {
-            transform.position += new Vector3(1, 0, 0);
+            transform.position -= new Vector3(1, 0, 0);
         }
-        if (ValidMouvement()) return;
-        transform.position -= new Vector3(1, 0, 0);
     }
 
-    void LeftMove(Vector3 diffposi)
+    void LeftMove()
     {
-        if(diffposi.x < 0)
+        transform.position += new Vector3(-1, 0, 0);
+        if (!ValidMouvement())
         {
-            transform.position += new Vector3(-1, 0, 0);
+            transform.position -= new Vector3(-1, 0, 0);
         }
-        if (ValidMouvement()) return;
-        transform.position -= new Vector3(-1, 0, 0);
     }
 
     void bottomMove()

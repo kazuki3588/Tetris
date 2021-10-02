@@ -1,18 +1,11 @@
-﻿<Properties StartupConfiguration="{D2BFFF02-D087-DB1A-C7FE-6538A965A290}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Hold.cs">
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Mino.cs">
     <Files>
-      <File FileName="Assets/Scripts/Mino.cs" Line="129" Column="1" />
+      <File FileName="Assets/Scripts/Mino.cs" Line="27" Column="23" />
       <File FileName="Assets/Scripts/SpawnMino.cs" Line="29" Column="1" />
-      <File FileName="Assets/Scripts/Hold.cs" Line="27" Column="53" />
-      <File FileName="Assets/Scripts/GameManager.cs" Line="24" Column="43" />
+      <File FileName="Assets/Scripts/Hold.cs" />
+      <File FileName="Assets/Scripts/GameManager.cs" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.UnitTesting.TestPad">
-        <State name="__root__">
-          <Node name="Unity" expanded="True" selected="True" />
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
