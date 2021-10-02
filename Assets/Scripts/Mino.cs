@@ -18,7 +18,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
     GameObject[] nextMinos;//現在存在するミノを格納するための変数
 
     public bool NextFlag { get; set; }
-
+    public bool HoldFlag { get; set; }
     void Update()
     {
         Vector3 nowPosition;//現在のマウスポジション
@@ -107,6 +107,7 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
                 transform.position -= new Vector3(0, -1, 0);
                 enabled = false;
                 NextFlag = false;
+                HoldFlag = false;
                 AddToGrid();//動けない状態になったらすぐグリッドに登録
                 CheckLines();
                 nextMinos = GameObject.FindGameObjectsWithTag("Mino");
@@ -115,6 +116,8 @@ class Mino : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,IPointerClickHa
                     if (nxMino.GetComponent<Mino>().NextFlag == true && !maxMino)
                     {
                         nxMino.transform.position = spawnPositon;//nextMinoの待機場所を変更
+                        nxMino.GetComponent<Mino>().NextFlag = false;
+                        nxMino.GetComponent<Mino>().HoldFlag = true;//Hold可能にする
                         nxMino.GetComponent<Mino>().enabled = true;//Minoを動かせる状態にする
                         FindObjectOfType<SpawnMino>().NextMinoCreate();
                     }

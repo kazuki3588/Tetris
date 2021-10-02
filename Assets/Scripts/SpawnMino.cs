@@ -7,16 +7,16 @@ public class SpawnMino : MonoBehaviour
     GameObject[] Minos;//7種類のminoを格納
     [SerializeField]
     Vector3 nextMinoPosi;//次のミノの待機場所
-
     void Start()
     {
-        firstMino();
+        FirstMino();
         NextMinoCreate();
     }
 
-    void firstMino()
+    void FirstMino()
     {
-        Instantiate(Minos[Random.Range(0, Minos.Length)], transform.position, Quaternion.identity);
+      GameObject firstMino =  Instantiate(Minos[Random.Range(0, Minos.Length)], transform.position, Quaternion.identity);
+        firstMino.GetComponent<Mino>().HoldFlag = true;
     }
 
     public void NextMinoCreate()

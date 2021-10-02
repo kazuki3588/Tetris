@@ -59,6 +59,7 @@
     <Compile Include="Assets/Scripts/SpawnMino.cs" />
     <Compile Include="Assets/Scripts/Mino.cs" />
     <Compile Include="Assets/Scripts/GameManager.cs" />
+    <Compile Include="Assets/Scripts/Hold.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
