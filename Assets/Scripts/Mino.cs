@@ -18,10 +18,11 @@ class Mino : MonoBehaviour
     GameObject[] nextMinos;//現在存在するミノを格納するための変数
     public bool NextFlag { get; set; }//次のミノかどうかを判定するフラグ
     public bool HoldFlag { get; set; }//holdみのかどうかを判定するフラグ
+    public bool OverMinoFlag { get; set; }//オーバーしたミノかどうかを判定するフラグ
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))//右クリックで回転
         {
             transform.Rotate(new Vector3(0, 0, -90));
             if (!ValidMouvement())
@@ -46,7 +47,7 @@ class Mino : MonoBehaviour
         }
     }
 
-    bool ValidMouvement()
+    public bool ValidMouvement()
     {
         foreach (Transform children in transform)
         {
