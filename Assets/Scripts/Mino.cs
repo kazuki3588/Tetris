@@ -21,7 +21,7 @@ class Mino : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0))
         {
             transform.Rotate(new Vector3(0, 0, -90));
             if (!ValidMouvement())
