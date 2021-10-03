@@ -32,7 +32,6 @@ class Mino : MonoBehaviour
 
         bottomMove();
         float mouseX = Input.GetAxis("Mouse X");
-
         if (Time.time - movePreviousTime < mouseSensitivity) return;
 
         if (mouseX > 0)
