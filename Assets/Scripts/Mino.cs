@@ -4,20 +4,20 @@ using UnityEngine.EventSystems;
 //テトリミノを管理するクラス
 class Mino : MonoBehaviour
 {
-    const int allowableToerance = 3;
+    const int allowableToerance = 3;//インデックス範囲外にならないようにするため
+    int deleteLineCont;//消したラインをカウントする
     float previousTime;//経過時間
     float movePreviousTime;//移動経過時間
     float fallTime = 1f;//minoが落ちる時間
-    float mouseSensitivity = 0.3f;
-    bool maxMino = false;
-    Vector3 rotationPoint;//minoの回転
+    float mouseSensitivity = 0.3f;//ミノの移動感度
+    bool maxMino = false;//テトリミノが最大に達したか？
     Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
     static int width = 10;//ステージの横幅
     static int height = 20;//ステージの縦幅
     static Transform[,] grid = new Transform[width, height + allowableToerance];//ミノを積み上げるためのグリッド２次元配列
     GameObject[] nextMinos;//現在存在するミノを格納するための変数
-    public bool NextFlag { get; set; }
-    public bool HoldFlag { get; set; }
+    public bool NextFlag { get; set; }//次のミノかどうかを判定するフラグ
+    public bool HoldFlag { get; set; }//holdみのかどうかを判定するフラグ
 
     void Update()
     {
@@ -132,19 +132,21 @@ class Mino : MonoBehaviour
 
     void CheckLines()
     {
-        for(int i = height -1; i >= 0; i--)//0から19段のラインを確認(縦)
+        for(int i = height -1; i >= 0; i--)//0から19行のラインを確認(縦)
         {
             if (HasLine(i))
             {
+                deleteLineCont++;
                 DeleteLine(i);
                 RowDown(i);
             }
         }
+        FindObjectOfType<GameManager>().AddScore(deleteLineCont);
     }
 
     bool HasLine(int i)
     {
-        for(int j = 0; j < width; j++)//0から10段のラインを確認(横）
+        for(int j = 0; j < width; j++)//0から10列のラインを確認(横）
         {
             if (grid[j, i] == null) return false;
         }
@@ -153,7 +155,6 @@ class Mino : MonoBehaviour
 
     void DeleteLine(int i)
     {
-        FindObjectOfType<GameManager>().AddScore();
         for(int j = 0; j <　width; j++)
         {
             Destroy(grid[j, i].gameObject);

@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 //Hold機能を実装するクラス
 class Hold : MonoBehaviour
 {
     GameObject[] currentMinos;//現在存在しているミノをすべて格納
-    Vector3 holdPosition = new Vector3(12f,9.7f,0);
+    Vector3 holdPosition = new Vector3(12f,9.7f,0);//holdの位置
     Vector3 middlePosition;//途中の位置を格納
-    bool firstClick;
+    bool firstClick;//最初にクリックしたかを判定
 
     public void PushHoldButton()
     {
