@@ -240,7 +240,7 @@ ScriptsOnlyBuild:
     className: IKManager2D
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: f793a45969e4b1fff14c0727ce8e0c14
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Hold

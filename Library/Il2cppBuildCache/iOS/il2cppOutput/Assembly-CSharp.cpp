@@ -2129,10 +2129,10 @@ inline SpawnMino_t6CE6E8D92F5F21DA3D97CD1982F56522064CEFAE * Object_FindObjectOf
 }
 // System.Void SpawnMino::NextMinoCreate()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void SpawnMino_NextMinoCreate_m28C0FA7446819CFC42F7D56984F6DF328B01EC43 (SpawnMino_t6CE6E8D92F5F21DA3D97CD1982F56522064CEFAE * __this, const RuntimeMethod* method);
-// System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
-IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m57495F692C6CE1CEF278CAD9A98221165D37E636_inline (Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E * __this, float ___x0, float ___y1, float ___z2, const RuntimeMethod* method);
 // System.Boolean UnityEngine.Input::GetMouseButtonDown(System.Int32)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool Input_GetMouseButtonDown_m466D81FDCC87C9CB07557B39DCB435EB691F1EF3 (int32_t ___button0, const RuntimeMethod* method);
+// System.Void UnityEngine.Vector3::.ctor(System.Single,System.Single,System.Single)
+IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Vector3__ctor_m57495F692C6CE1CEF278CAD9A98221165D37E636_inline (Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E * __this, float ___x0, float ___y1, float ___z2, const RuntimeMethod* method);
 // System.Void UnityEngine.Transform::Rotate(UnityEngine.Vector3)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Transform_Rotate_m027A155054DDC4206F679EFB86BE0960D45C33A7 (Transform_tA8193BB29D4D2C7EC04918F3ED1816345186C3F1 * __this, Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  ___eulers0, const RuntimeMethod* method);
 // System.Boolean Mino::ValidMouvement()
@@ -2644,11 +2644,6 @@ IL_0132:
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Hold__ctor_m8EC1C0263FFD6E33C3AA0AF31B03018008A065A4 (Hold_t1D231417C94CDA47827A53613150C8D23B4376ED * __this, const RuntimeMethod* method)
 {
 	{
-		// Vector3 holdPosition = new Vector3(12f,9.7f,0);//holdの位置
-		Vector3_t65B972D6A585A0A5B63153CF1177A90D3C90D65E  L_0;
-		memset((&L_0), 0, sizeof(L_0));
-		Vector3__ctor_m57495F692C6CE1CEF278CAD9A98221165D37E636_inline((&L_0), (12.0f), (9.69999981f), (0.0f), /*hidden argument*/NULL);
-		__this->set_holdPosition_5(L_0);
 		MonoBehaviour__ctor_mC0995D847F6A95B1A553652636C38A2AA8B13BED(__this, /*hidden argument*/NULL);
 		return;
 	}
@@ -2710,9 +2705,9 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Mino_Update_m5EDE52FC64D7358DC8F84C3E324
 	}
 	float V_0 = 0.0f;
 	{
-		// if (Input.GetMouseButtonDown(0))
+		// if (Input.GetMouseButtonDown(1))
 		bool L_0;
-		L_0 = Input_GetMouseButtonDown_m466D81FDCC87C9CB07557B39DCB435EB691F1EF3(0, /*hidden argument*/NULL);
+		L_0 = Input_GetMouseButtonDown_m466D81FDCC87C9CB07557B39DCB435EB691F1EF3(1, /*hidden argument*/NULL);
 		if (!L_0)
 		{
 			goto IL_004e;

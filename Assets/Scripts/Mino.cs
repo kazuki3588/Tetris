@@ -21,7 +21,7 @@ class Mino : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             transform.Rotate(new Vector3(0, 0, -90));
             if (!ValidMouvement())
@@ -31,9 +31,9 @@ class Mino : MonoBehaviour
         }
 
         bottomMove();
+
         float mouseX = Input.GetAxis("Mouse X");
         if (Time.time - movePreviousTime < mouseSensitivity) return;
-
         if (mouseX > 0)
         {
             RightMove();
