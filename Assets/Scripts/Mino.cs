@@ -1,50 +1,36 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 //テトリミノを管理するクラス
 class Mino : MonoBehaviour
 {
     const int allowableToerance = 3;//インデックス範囲外にならないようにするため
     int deleteLineCont;//消したラインをカウントする
-    float previousTime;//経過時間
+    float bottomMovePreviousTime;//経過時間
     float movePreviousTime;//移動経過時間
     float fallTime = 1f;//minoが落ちる時間
-    float mouseSensitivity = 0.3f;//ミノの移動感度
+    float moveSensitivity = 0.5f;//ミノの移動感度
+    float touchFirstTime;//画面に触れた時間
+    float leaveTime;//画面い離れた時間
     bool maxMino = false;//テトリミノが最大に達したか？
     Vector3 spawnPositon = new Vector3(5f, 19f, 0f);
     static int width = 10;//ステージの横幅
     static int height = 20;//ステージの縦幅
     static Transform[,] grid = new Transform[width, height + allowableToerance];//ミノを積み上げるためのグリッド２次元配列
     GameObject[] nextMinos;//現在存在するミノを格納するための変数
+
     public bool NextFlag { get; set; }//次のミノかどうかを判定するフラグ
     public bool HoldFlag { get; set; }//holdみのかどうかを判定するフラグ
     public bool OverMinoFlag { get; set; }//オーバーしたミノかどうかを判定するフラグ
+    bool iscallOnce = false;
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))//右クリックで回転
-        {
-            transform.Rotate(new Vector3(0, 0, -90));
-            if (!ValidMouvement())
-            {
-                transform.Rotate(new Vector3(0, 0, 90));
-            }
-        }
 
-        bottomMove();
+        bottomMove();//落下処理
 
-        float mouseX = Input.GetAxis("Mouse X");
-        if (Time.time - movePreviousTime < mouseSensitivity) return;
-        if (mouseX > 0)
-        {
-            RightMove();
-            movePreviousTime = Time.time;
-        }
-        else if (mouseX < 0)
-        {
-            LeftMove();
-            movePreviousTime = Time.time;
-        }
+        Click();//クリック処理
+
+        LeftOrRight();//左右移動(スワイプ)
     }
 
     public bool ValidMouvement()
@@ -84,9 +70,27 @@ class Mino : MonoBehaviour
         }
     }
 
+    void LeftOrRight()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+
+        if (Time.time - movePreviousTime > moveSensitivity)
+        {
+            if (mouseX > 0)
+            {
+                RightMove();
+                movePreviousTime = Time.time;
+            }
+            else if (mouseX < 0)
+            {
+                LeftMove();
+                movePreviousTime = Time.time;
+            }
+        }
+    }
     void bottomMove()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Time.time - previousTime >= fallTime)
+        if(Input.GetKeyDown(KeyCode.DownArrow) || Time.time - bottomMovePreviousTime >= fallTime)
         {
             transform.position += new Vector3(0, -1, 0);
             if (!ValidMouvement())
@@ -110,7 +114,35 @@ class Mino : MonoBehaviour
                     }
                 }
             }
-            previousTime = Time.time;
+            bottomMovePreviousTime = Time.time;
+        }
+    }
+
+    void Click()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchFirstTime = Time.time;//画面に触れた瞬間の経過時間を代入   
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            iscallOnce = true;//処理を１回に制限するため
+            leaveTime = Time.time;//画面に離れた瞬間の経過時間を代入
+        }
+
+        var touchTime = leaveTime - touchFirstTime;//触れた瞬間から離れた時間の差分
+        if (iscallOnce)
+        {
+            iscallOnce = false;
+            if (touchTime > 0.1)//クリック処理
+            {
+                transform.Rotate(new Vector3(0, 0, -90));
+                if (!ValidMouvement())
+                {
+                    transform.Rotate(new Vector3(0, 0, 90));
+                }
+            }
         }
     }
 
