@@ -135,7 +135,7 @@ class Mino : MonoBehaviour
         if (iscallOnce)
         {
             iscallOnce = false;
-            if (touchTime > 0.1 && touchTime < 0.3)//クリック処理
+            if (touchTime > 0.02f && touchTime < 0.3)//クリック処理
             {
                 transform.Rotate(new Vector3(0, 0, -90));
                 if (!ValidMouvement())
