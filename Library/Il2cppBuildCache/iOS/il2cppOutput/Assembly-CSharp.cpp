@@ -3926,24 +3926,24 @@ IL_002d:
 		bool L_6 = __this->get_iscallOnce_21();
 		if (!L_6)
 		{
-			goto IL_00aa;
+			goto IL_00a5;
 		}
 	}
 	{
 		// iscallOnce = false;
 		__this->set_iscallOnce_21((bool)0);
-		// if (touchTime > 0.1 && touchTime < 0.3)//クリック処理
+		// if (touchTime > 0.02f && touchTime < 0.3)//クリック処理
 		float L_7 = V_0;
-		if ((!(((double)((double)((double)L_7))) > ((double)(0.10000000000000001)))))
+		if ((!(((float)L_7) > ((float)(0.0199999996f)))))
 		{
-			goto IL_00aa;
+			goto IL_00a5;
 		}
 	}
 	{
 		float L_8 = V_0;
 		if ((!(((double)((double)((double)L_8))) < ((double)(0.29999999999999999)))))
 		{
-			goto IL_00aa;
+			goto IL_00a5;
 		}
 	}
 	{
@@ -3960,7 +3960,7 @@ IL_002d:
 		L_11 = Mino_ValidMouvement_mC07A376457189DA75E4433DD3BB6D29DF7584114(__this, /*hidden argument*/NULL);
 		if (L_11)
 		{
-			goto IL_00aa;
+			goto IL_00a5;
 		}
 	}
 	{
@@ -3974,7 +3974,7 @@ IL_002d:
 		Transform_Rotate_m027A155054DDC4206F679EFB86BE0960D45C33A7(L_12, L_13, /*hidden argument*/NULL);
 	}
 
-IL_00aa:
+IL_00a5:
 	{
 		// }
 		return;

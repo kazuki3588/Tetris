@@ -90,7 +90,7 @@ class Mino : MonoBehaviour
     }
     void bottomMove()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow) || Time.time - bottomMovePreviousTime >= fallTime)
+        if(Time.time - bottomMovePreviousTime >= fallTime)
         {
             transform.position += new Vector3(0, -1, 0);
             if (!ValidMouvement())
