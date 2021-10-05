@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674ebc3d86a1f41eb93e0fe20041bb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdPosition: {x: 8, y: 22, z: 0}
+  holdPosition: {x: 9.5, y: 21, z: 0}
 --- !u!1 &510175502
 GameObject:
   m_ObjectHideFlags: 0
