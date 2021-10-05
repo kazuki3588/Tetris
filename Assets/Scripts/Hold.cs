@@ -52,10 +52,10 @@ class Hold : MonoBehaviour
                         _ctMino.transform.position = new Vector3(9.2f, 20.3f, 0);
                         break;
                     case "Lmino(Clone)":
-                        _ctMino.transform.position = new Vector3(9.1f, 21.16f, 0);
+                        _ctMino.transform.position = new Vector3(9.1f, 21f, 0);
                         break;
                     case "Smino(Clone)":
-                        _ctMino.transform.position = new Vector3(9.09f, 22.22f, 0);
+                        _ctMino.transform.position = new Vector3(9.09f, 22f, 0);
                         break;
                     case "Squaremino(Clone)":
                         _ctMino.transform.position = new Vector3(9.7f, 22f, 0);
